@@ -27,6 +27,7 @@
       <ul class="nav-links" id="navLinks">
         <li><a href="#hero" class="active">Ana Sayfa</a></li>
         <li><a href="#about">Hakkımda</a></li>
+        <li><a href="#projects">Projelerim</a></li>
         <li><a href="#social">Sosyal Medya</a></li>
         <li><a href="#contact">İletişim</a></li>
       </ul>
@@ -43,6 +44,14 @@
   <section id="hero">
     <canvas id="particles-canvas"></canvas>
     <div class="hero-content">
+      <!-- Live / Streamer Status Badge -->
+      <div class="stream-badge-container">
+        <a href="https://kick.com/Mehbur07" target="_blank" rel="noopener noreferrer" class="stream-badge">
+          <span class="pulse-dot"></span>
+          <span class="badge-text"><i class="fa-solid fa-tower-broadcast"></i> Kick & Twitch Yayıncısı</span>
+        </a>
+      </div>
+
       <img src="assets/logo.png" alt="Mehbur07 Logo" class="hero-logo">
       <h1 class="hero-name">
         Mehmet Burak ŞAHİN <span class="highlight">(Mehbur07)</span>
@@ -52,8 +61,8 @@
         <span class="cursor"></span>
       </div>
       <div class="hero-buttons">
-        <a href="#about" class="btn btn-primary">
-          <i class="fas fa-user"></i> Hakkımda
+        <a href="#projects" class="btn btn-primary">
+          <i class="fas fa-code"></i> Projelerim
         </a>
         <a href="#social" class="btn btn-outline">
           <i class="fas fa-share-nodes"></i> Sosyal Medya
@@ -108,6 +117,150 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS SECTION ===== -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title reveal"><span>Projelerim</span></h2>
+      <p class="section-subtitle reveal">Geliştirdiğim açık kaynaklı yazılım ve elektronik projeleri</p>
+
+      <!-- Main Project Cards Grid -->
+      <div class="projects-grid stagger-children" id="projectsGrid">
+        
+        <!-- Project 1: Mehbur07 Site -->
+        <div class="project-card reveal" style="--i: 0">
+          <div class="project-header">
+            <div class="project-icon">
+              <i class="fa-solid fa-globe"></i>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Mehbur07/mehbur07-site" target="_blank" rel="noopener noreferrer" title="GitHub Deposu" class="proj-link-btn">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a href="https://mehbur07.github.io/mehbur07-site/" target="_blank" rel="noopener noreferrer" title="Canlı Önizleme" class="proj-link-btn">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Mehbur07.com Web Sitesi</h3>
+            <p class="project-desc">
+              Siyah ve neon sarı temalı, animasyonlu parçacık arka planı ve modern bileşenlere sahip kişisel portfolio web sitesi.
+            </p>
+            <div class="project-tags">
+              <span class="tag">HTML5</span>
+              <span class="tag">CSS3</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">GitHub Pages</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 (Example / Placeholder for new projects like Minecraft, etc.) -->
+        <div class="project-card reveal" style="--i: 1">
+          <div class="project-header">
+            <div class="project-icon">
+              <i class="fa-solid fa-gamepad"></i>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Mehbur07" target="_blank" rel="noopener noreferrer" title="GitHub Deposu" class="proj-link-btn">
+                <i class="fa-brands fa-github"></i>
+              </a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-badge-tag">Yeni Eklenecek</div>
+            <h3 class="project-title">Geliştirilen Oyun & Yazılım Projeleri</h3>
+            <p class="project-desc">
+              Minecraft eklentileri, oyun modları, robotik ve elektronik projelerim yakında buraya GitHub bağlantılarıyla eklenecektir.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Gaming</span>
+              <span class="tag">Software</span>
+              <span class="tag">Electronics</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ===== ONGOING PROJECTS & PHASES (Üzerinde Çalıştığım Projeler) ===== -->
+      <div class="ongoing-projects-wrapper reveal">
+        <div class="ongoing-header">
+          <div class="ongoing-title-box">
+            <span class="pulse-indicator"></span>
+            <h3><i class="fa-solid fa-code-branch"></i> Üzerinde Çalıştığım Projeler & Fazlar</h3>
+          </div>
+          <a href="https://github.com/Mehbur07/mehbur07-site/commits/master" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+            <i class="fa-brands fa-github"></i> Tüm Fazları & Commit'leri Gör
+          </a>
+        </div>
+
+        <!-- Active Project Phase Tracker -->
+        <div class="phase-tracker-card">
+          <div class="phase-card-top">
+            <div>
+              <h4>Mehbur07.com Web Sitesi Geliştirme Süreci</h4>
+              <p>GitHub üzerinde sürüm bazlı olarak faz faz yayınlanan güncellemeler</p>
+            </div>
+            <span class="status-badge active"><i class="fa-solid fa-circle-check"></i> Aktif Geliştirme</span>
+          </div>
+
+          <div class="phases-timeline">
+            <!-- Phase 1 -->
+            <div class="phase-item completed">
+              <div class="phase-marker"><i class="fa-solid fa-check"></i></div>
+              <div class="phase-info">
+                <div class="phase-head">
+                  <h5>Faz 1: Temel Yapı, Tasarım Sistemi & Hero</h5>
+                  <span class="phase-tag done">Yayınlandı</span>
+                </div>
+                <p>Siyah & neon sarı tema, hareketli parçacıklar, logo animasyonu ve dinamik meslek yazısı.</p>
+              </div>
+            </div>
+
+            <!-- Phase 2 -->
+            <div class="phase-item completed">
+              <div class="phase-marker"><i class="fa-solid fa-check"></i></div>
+              <div class="phase-info">
+                <div class="phase-head">
+                  <h5>Faz 2: Hakkımda & 7 Sosyal Medya Entegrasyonu</h5>
+                  <span class="phase-tag done">Yayınlandı</span>
+                </div>
+                <p>Kişisel vizyon ve hedefler kartı, Instagram, YouTube, Discord, X, GitHub, Kick ve Twitch kartları.</p>
+              </div>
+            </div>
+
+            <!-- Phase 3 -->
+            <div class="phase-item completed">
+              <div class="phase-marker"><i class="fa-solid fa-check"></i></div>
+              <div class="phase-info">
+                <div class="phase-head">
+                  <h5>Faz 3: İletişim, Yayıncı Rozeti & GitHub Pages</h5>
+                  <span class="phase-tag done">Yayınlandı</span>
+                </div>
+                <p>Canlı yayıncı bildirim rozeti, e-posta formu, SEO meta etiketleri ve GitHub Pages canlı yayını.</p>
+              </div>
+            </div>
+
+            <!-- Phase 4 -->
+            <div class="phase-item in-progress">
+              <div class="phase-marker"><i class="fa-solid fa-spinner fa-spin"></i></div>
+              <div class="phase-info">
+                <div class="phase-head">
+                  <h5>Faz 4: Projeler Vitrini & Yol Haritası</h5>
+                  <span class="phase-tag current">Geliştiriliyor</span>
+                </div>
+                <p>Açık kaynak projeleri sergileme alanı ve devam eden fazların GitHub ile canlı takibi.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
     </div>
   </section>
 
@@ -262,6 +415,7 @@
         <ul class="footer-links">
           <li><a href="#hero">Ana Sayfa</a></li>
           <li><a href="#about">Hakkımda</a></li>
+          <li><a href="#projects">Projelerim</a></li>
           <li><a href="#social">Sosyal Medya</a></li>
           <li><a href="#contact">İletişim</a></li>
         </ul>
