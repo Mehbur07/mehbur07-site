@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mehbur07 - Gamer, Streamer, Electronic Technician & Software Developer. Mehmet Burak ŞAHİN'in kişisel web sitesi.">
+  <meta name="keywords" content="Mehbur07, Mehmet Burak ŞAHİN, gamer, streamer, developer, yazılımcı, elektronikçi">
+  <meta name="author" content="Mehmet Burak ŞAHİN">
+  <meta property="og:title" content="Mehbur07 | Mehmet Burak ŞAHİN">
+  <meta property="og:description" content="Gamer / Streamer / Electronic Technician / Software Developer">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mehbur07.com">
+  <title>Mehbur07 | Mehmet Burak ŞAHİN</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#hero" class="nav-brand">
+        <img src="assets/logo.png" alt="Mehbur07 Logo">
+        <span>MEHBUR07</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero" class="active">Ana Sayfa</a></li>
+        <li><a href="#about">Hakkımda</a></li>
+        <li><a href="#social">Sosyal Medya</a></li>
+        <li><a href="#contact">İletişim</a></li>
+      </ul>
+      <div class="nav-toggle" id="navToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <div class="nav-overlay" id="navOverlay"></div>
+  </nav>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section id="hero">
+    <canvas id="particles-canvas"></canvas>
+    <div class="hero-content">
+      <img src="assets/logo.png" alt="Mehbur07 Logo" class="hero-logo">
+      <h1 class="hero-name">
+        Mehmet Burak ŞAHİN <span class="highlight">(Mehbur07)</span>
+      </h1>
+      <div class="hero-typing-wrapper">
+        <span class="typing-text" id="typingText"></span>
+        <span class="cursor"></span>
+      </div>
+      <div class="hero-buttons">
+        <a href="#about" class="btn btn-primary">
+          <i class="fas fa-user"></i> Hakkımda
+        </a>
+        <a href="#social" class="btn btn-outline">
+          <i class="fas fa-share-nodes"></i> Sosyal Medya
+        </a>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>Aşağı Kaydır</span>
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT SECTION ===== -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title reveal"><span>Hakkımda</span></h2>
+      <div class="glow-separator reveal">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+
+      <div class="about-grid">
+        <!-- About Text -->
+        <div class="about-text-card reveal-left">
+          <i class="fas fa-quote-left quote-icon"></i>
+          <h3>👋 Ben Burak.</h3>
+          <p>
+            Ben genç bir oyuncu, yayıncı, elektronikçi ve yazılımcıyım.
+            Teknolojiye ve oyunlara olan tutkum beni bu alanlarda kendimi geliştirmeye yönlendirdi.
+            Her gün yeni bir şeyler öğrenmeye ve üretmeye devam ediyorum.
+          </p>
+        </div>
+
+        <!-- Goals -->
+        <div class="goals-container stagger-children">
+          <div class="goal-card reveal" style="--i: 0">
+            <div class="goal-number">1</div>
+            <p>Yayınlarımda ve videolarımda sizi eğlendirmek ve sizi sıkmamak.</p>
+          </div>
+          <div class="goal-card reveal" style="--i: 1">
+            <div class="goal-number">2</div>
+            <p>Yazdığım alanlarda daha başarılı olmak.</p>
+          </div>
+          <div class="goal-card reveal" style="--i: 2">
+            <div class="goal-number">3</div>
+            <p>İnsanlara ilham kaynağı olmak.</p>
+          </div>
+          <div class="goal-card reveal" style="--i: 3">
+            <div class="goal-number">4</div>
+            <p>Benim başarıya ulaşamayacağımı düşünenleri utandırmak. 🔥</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SOCIAL MEDIA SECTION ===== -->
+  <section id="social">
+    <div class="container">
+      <h2 class="section-title reveal"><span>Sosyal Medya</span></h2>
+      <p class="section-subtitle reveal">Beni takip edin ve topluluğa katılın!</p>
+
+      <div class="social-grid stagger-children">
+        <!-- Instagram -->
+        <a href="https://instagram.com/mehbur07" target="_blank" rel="noopener noreferrer" class="social-card instagram reveal" style="--i: 0">
+          <div class="social-icon instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </div>
+          <div class="social-info">
+            <h3>Instagram</h3>
+            <p>@mehbur07</p>
+          </div>
+        </a>
+
+        <!-- YouTube -->
+        <a href="https://youtube.com/@Mehbur07" target="_blank" rel="noopener noreferrer" class="social-card youtube reveal" style="--i: 1">
+          <div class="social-icon youtube">
+            <i class="fa-brands fa-youtube"></i>
+          </div>
+          <div class="social-info">
+            <h3>YouTube</h3>
+            <p>@Mehbur07</p>
+          </div>
+        </a>
+
+        <!-- Discord -->
+        <a href="https://discord.gg/SkQXHFP2Q" target="_blank" rel="noopener noreferrer" class="social-card discord reveal" style="--i: 2">
+          <div class="social-icon discord">
+            <i class="fa-brands fa-discord"></i>
+          </div>
+          <div class="social-info">
+            <h3>Discord</h3>
+            <p>Sunucuya Katıl</p>
+          </div>
+        </a>
+
+        <!-- Twitter / X -->
+        <a href="https://x.com/RealMehbur07X" target="_blank" rel="noopener noreferrer" class="social-card twitter reveal" style="--i: 3">
+          <div class="social-icon twitter">
+            <i class="fa-brands fa-x-twitter"></i>
+          </div>
+          <div class="social-info">
+            <h3>Twitter / X</h3>
+            <p>@RealMehbur07X</p>
+          </div>
+        </a>
+
+        <!-- GitHub -->
+        <a href="https://github.com/Mehbur07" target="_blank" rel="noopener noreferrer" class="social-card github reveal" style="--i: 4">
+          <div class="social-icon github">
+            <i class="fa-brands fa-github"></i>
+          </div>
+          <div class="social-info">
+            <h3>GitHub</h3>
+            <p>Mehbur07</p>
+          </div>
+        </a>
+
+        <!-- Kick -->
+        <a href="https://kick.com/Mehbur07" target="_blank" rel="noopener noreferrer" class="social-card kick reveal" style="--i: 5">
+          <div class="social-icon kick">
+            <span>K</span>
+          </div>
+          <div class="social-info">
+            <h3>Kick</h3>
+            <p>Mehbur07</p>
+          </div>
+        </a>
+
+        <!-- Twitch -->
+        <a href="https://twitch.tv/Mehbur07" target="_blank" rel="noopener noreferrer" class="social-card twitch reveal" style="--i: 6">
+          <div class="social-icon twitch">
+            <i class="fa-brands fa-twitch"></i>
+          </div>
+          <div class="social-info">
+            <h3>Twitch</h3>
+            <p>Mehbur07</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT SECTION ===== -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title reveal"><span>İletişim</span></h2>
+      <p class="section-subtitle reveal">Benimle iletişime geçmekten çekinmeyin!</p>
+
+      <div class="contact-grid">
+        <!-- Contact Info -->
+        <div class="contact-info-card reveal-left">
+          <h3>Bana <span>Ulaşın</span></h3>
+          <p>
+            Herhangi bir soru, iş birliği teklifi veya sadece merhaba demek için bana ulaşabilirsiniz.
+            En kısa sürede geri dönüş yapmaya çalışacağım!
+          </p>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>mehbur07destek@gmail.com</span>
+          </div>
+          <div class="contact-item">
+            <i class="fa-brands fa-discord"></i>
+            <span>Discord Sunucuma Katıl</span>
+          </div>
+          <div class="contact-item">
+            <i class="fa-brands fa-x-twitter"></i>
+            <span>@RealMehbur07X</span>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form-card reveal-right">
+          <h3><i class="fas fa-paper-plane"></i> Mesaj Gönder</h3>
+          <form id="contactForm" action="mailto:mehbur07destek@gmail.com" method="POST" enctype="text/plain">
+            <div class="form-group">
+              <label for="name">Adınız</label>
+              <input type="text" id="name" name="name" placeholder="Adınızı girin..." required>
+            </div>
+            <div class="form-group">
+              <label for="email">E-posta</label>
+              <input type="email" id="email" name="email" placeholder="E-posta adresiniz..." required>
+            </div>
+            <div class="form-group">
+              <label for="message">Mesajınız</label>
+              <textarea id="message" name="message" placeholder="Mesajınızı yazın..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-submit">
+              <i class="fas fa-paper-plane"></i> Gönder
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <img src="assets/logo.png" alt="Mehbur07">
+          <span>MEHBUR07</span>
+        </div>
+        <ul class="footer-links">
+          <li><a href="#hero">Ana Sayfa</a></li>
+          <li><a href="#about">Hakkımda</a></li>
+          <li><a href="#social">Sosyal Medya</a></li>
+          <li><a href="#contact">İletişim</a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Mehbur07. Tüm hakları saklıdır. <span class="heart">&hearts;</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

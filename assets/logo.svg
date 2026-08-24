@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <radialGradient id="bgGlow" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#08080f"/>
+    </radialGradient>
+    <linearGradient id="hoodGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2d1b69"/>
+      <stop offset="50%" stop-color="#1a0f3c"/>
+      <stop offset="100%" stop-color="#0d0826"/>
+    </linearGradient>
+    <linearGradient id="hoodLight" x1="30%" y1="0%" x2="70%" y2="100%">
+      <stop offset="0%" stop-color="#4a2d8a"/>
+      <stop offset="100%" stop-color="#1a0f3c"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFD700"/>
+      <stop offset="100%" stop-color="#FFA500"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="strongGlow">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <clipPath id="circle">
+      <circle cx="200" cy="200" r="195"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <circle cx="200" cy="200" r="200" fill="url(#bgGlow)"/>
+
+  <!-- Clipped content -->
+  <g clip-path="url(#circle)">
+    <!-- Subtle grid pattern -->
+    <g opacity="0.03" stroke="#FFD700" stroke-width="0.5">
+      <line x1="0" y1="80" x2="400" y2="80"/>
+      <line x1="0" y1="160" x2="400" y2="160"/>
+      <line x1="0" y1="240" x2="400" y2="240"/>
+      <line x1="0" y1="320" x2="400" y2="320"/>
+      <line x1="80" y1="0" x2="80" y2="400"/>
+      <line x1="160" y1="0" x2="160" y2="400"/>
+      <line x1="240" y1="0" x2="240" y2="400"/>
+      <line x1="320" y1="0" x2="320" y2="400"/>
+    </g>
+
+    <!-- Character body/shoulders -->
+    <path d="M105,340 Q110,270 150,250 Q175,240 200,235 Q225,240 250,250 Q290,270 295,340 L105,340 Z"
+          fill="#0d0826" filter="url(#shadow)"/>
+    <path d="M115,340 Q118,278 155,258 Q178,248 200,243 Q222,248 245,258 Q282,278 285,340 L115,340 Z"
+          fill="url(#hoodGrad)"/>
+
+    <!-- Neck area -->
+    <path d="M175,235 Q200,245 225,235 L225,250 Q200,260 175,250 Z" fill="#1a0f3c"/>
+
+    <!-- Hood - main shape -->
+    <path d="M120,200 Q115,140 140,100 Q160,72 200,60 Q240,72 260,100 Q285,140 280,200 Q275,230 250,240 Q225,250 200,252 Q175,250 150,240 Q125,230 120,200 Z"
+          fill="url(#hoodGrad)" filter="url(#shadow)"/>
+
+    <!-- Hood - left highlight -->
+    <path d="M130,190 Q128,140 148,105 Q165,80 200,68 Q195,80 170,105 Q145,140 140,190 Q138,210 145,228 Q135,218 130,190 Z"
+          fill="url(#hoodLight)" opacity="0.6"/>
+
+    <!-- Hood opening / face shadow -->
+    <path d="M150,170 Q148,145 160,125 Q175,108 200,103 Q225,108 240,125 Q252,145 250,170 Q248,200 240,215 Q225,230 200,232 Q175,230 160,215 Q152,200 150,170 Z"
+          fill="#080415"/>
+
+    <!-- Face mask area -->
+    <path d="M158,175 Q156,155 165,138 Q178,120 200,116 Q222,120 235,138 Q244,155 242,175 Q240,198 233,210 Q222,222 200,224 Q178,222 167,210 Q160,198 158,175 Z"
+          fill="#0a0520" opacity="0.8"/>
+
+    <!-- Eyes -->
+    <!-- Left eye -->
+    <path d="M168,160 Q172,152 182,150 Q192,152 195,160 Q192,164 182,166 Q172,164 168,160 Z"
+          fill="url(#goldGrad)" filter="url(#strongGlow)"/>
+    <!-- Left eye inner -->
+    <ellipse cx="182" cy="159" rx="5" ry="4" fill="#fff" opacity="0.7"/>
+
+    <!-- Right eye -->
+    <path d="M205,160 Q208,152 218,150 Q228,152 232,160 Q228,164 218,166 Q208,164 205,160 Z"
+          fill="url(#goldGrad)" filter="url(#strongGlow)"/>
+    <!-- Right eye inner -->
+    <ellipse cx="218" cy="159" rx="5" ry="4" fill="#fff" opacity="0.7"/>
+
+    <!-- Mask/bandana across face -->
+    <path d="M155,172 Q155,180 160,188 Q170,200 200,202 Q230,200 240,188 Q245,180 245,172 Q240,168 230,170 Q215,174 200,175 Q185,174 170,170 Q160,168 155,172 Z"
+          fill="#1a0f3c"/>
+    <path d="M157,175 Q160,170 170,172 Q185,176 200,177 Q215,176 230,172 Q240,170 243,175 Q240,178 230,176 Q215,180 200,181 Q185,180 170,176 Q160,178 157,175 Z"
+          fill="#2d1b69" opacity="0.5"/>
+
+    <!-- Headband -->
+    <rect x="140" y="140" width="120" height="8" rx="4" fill="url(#goldGrad)" filter="url(#glow)" opacity="0.9"/>
+    <!-- Headband knot detail -->
+    <circle cx="258" cy="144" r="6" fill="url(#goldGrad)" filter="url(#glow)" opacity="0.8"/>
+
+    <!-- Hood edge highlights -->
+    <path d="M120,200 Q115,140 140,100 Q160,72 200,60"
+          fill="none" stroke="#4a2d8a" stroke-width="1.5" opacity="0.4"/>
+    <path d="M280,200 Q285,140 260,100 Q240,72 200,60"
+          fill="none" stroke="#4a2d8a" stroke-width="1" opacity="0.2"/>
+  </g>
+
+  <!-- Text: MEHBUR -->
+  <text x="200" y="330" text-anchor="middle" font-family="Arial Black, Arial, sans-serif"
+        font-size="42" font-weight="900" fill="url(#goldGrad)" filter="url(#glow)"
+        letter-spacing="4">MEHBUR</text>
+
+  <!-- Text: 07 subscript -->
+  <text x="315" y="330" text-anchor="start" font-family="Arial Black, Arial, sans-serif"
+        font-size="24" font-weight="900" fill="#FFD700" filter="url(#glow)" opacity="0.8">07</text>
+
+  <!-- Outer ring -->
+  <circle cx="200" cy="200" r="195" fill="none" stroke="url(#goldGrad)"
+          stroke-width="2" opacity="0.3" filter="url(#glow)"/>
+
+  <!-- Accent dots -->
+  <circle cx="200" cy="378" r="3" fill="#FFD700" filter="url(#glow)" opacity="0.6"/>
+  <circle cx="185" cy="375" r="2" fill="#FFD700" opacity="0.3"/>
+  <circle cx="215" cy="375" r="2" fill="#FFD700" opacity="0.3"/>
+</svg>
