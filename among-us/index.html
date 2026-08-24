@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Among Us - The Skeld (Web Edition)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Orbitron:wght@500;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Main Game Canvas -->
+        <canvas id="game-canvas"></canvas>
+
+        <!-- Top Task Progress Bar -->
+        <div id="task-bar-container" class="hud-layer hidden">
+            <div class="task-bar-header">
+                <span class="task-bar-title">TOPLAM GÖREV TAMAMLAMA</span>
+            </div>
+            <div class="task-bar-outer">
+                <div id="task-bar-inner"></div>
+            </div>
+        </div>
+
+        <!-- Task List HUD (Top Left) -->
+        <div id="task-list" class="hud-layer hidden">
+            <div class="task-list-header">Görevler:</div>
+            <ul id="task-items"></ul>
+        </div>
+
+        <!-- Sabotage Alert Overlay -->
+        <div id="sabotage-alert" class="sabotage-banner hidden">
+            <div class="alarm-siren">⚠️</div>
+            <div class="sabotage-info">
+                <div id="sabotage-name">KRİTİK SABOTAJ!</div>
+                <div id="sabotage-timer">30s</div>
+            </div>
+        </div>
+
+        <!-- Role Announcement Overlay -->
+        <div id="role-reveal-modal" class="screen-overlay hidden">
+            <div class="role-reveal-content">
+                <div id="role-title" class="role-title-text">CREWMATE</div>
+                <div id="role-subtitle" class="role-subtitle-text">Aramızda <span id="role-impostor-count">1</span> Sahtekar Var!</div>
+                <div class="role-avatar-preview">
+                    <canvas id="role-canvas" width="160" height="200"></canvas>
+                </div>
+                <div id="role-teammates" class="role-teammates-list"></div>
+            </div>
+        </div>
+
+        <!-- Action Buttons (Bottom Right HUD) -->
+        <div id="action-hud" class="hud-layer hidden">
+            <button id="btn-report" class="action-btn report-btn disabled" title="Ceset Bildir (R)">
+                <span class="btn-icon">🚨</span>
+                <span class="btn-label">REPORT</span>
+            </button>
+            <button id="btn-use" class="action-btn use-btn disabled" title="Kullan / Görev (E)">
+                <span class="btn-icon">🖐️</span>
+                <span class="btn-label">USE</span>
+            </button>
+            <button id="btn-kill" class="action-btn kill-btn hidden disabled" title="Öldür (Q)">
+                <span class="btn-icon">🔪</span>
+                <span class="btn-label">KILL</span>
+                <span id="kill-timer" class="cooldown-timer"></span>
+            </button>
+            <button id="btn-vent" class="action-btn vent-btn hidden disabled" title="Havalandırma (V)">
+                <span class="btn-icon">🕳️</span>
+                <span class="btn-label">VENT</span>
+            </button>
+            <button id="btn-sabotage" class="action-btn sabotage-btn hidden" title="Sabotaj (TAB)">
+                <span class="btn-icon">⚡</span>
+                <span class="btn-label">SABOTAGE</span>
+            </button>
+            <button id="btn-map" class="action-btn map-btn" title="Harita (M)">
+                <span class="btn-icon">🗺️</span>
+                <span class="btn-label">MAP</span>
+            </button>
+        </div>
+
+        <!-- Virtual Joystick for Mobile / Touch / Optional Mouse -->
+        <div id="virtual-joystick" class="hidden">
+            <div id="joystick-base">
+                <div id="joystick-thumb"></div>
+            </div>
+        </div>
+
+        <!-- Minimap / Full Map Modal -->
+        <div id="map-modal" class="screen-overlay hidden">
+            <div class="map-window">
+                <div class="modal-header">
+                    <h2>THE SKELD - HARİTA</h2>
+                    <button class="close-btn" id="close-map-btn">&times;</button>
+                </div>
+                <div class="map-canvas-wrapper">
+                    <canvas id="map-canvas" width="800" height="520"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sabotage Console Modal (For Impostors) -->
+        <div id="sabotage-modal" class="screen-overlay hidden">
+            <div class="sabotage-window">
+                <div class="modal-header">
+                    <h2>SABOTAJ KONTROL PANELİ</h2>
+                    <button class="close-btn" id="close-sabotage-btn">&times;</button>
+                </div>
+                <div class="sabotage-map-view">
+                    <canvas id="sabotage-canvas" width="800" height="520"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Security Cameras Modal -->
+        <div id="cams-modal" class="screen-overlay hidden">
+            <div class="cams-window">
+                <div class="cams-header">
+                    <div class="rec-indicator">● REC - SECURITY FEED</div>
+                    <button class="close-btn" id="close-cams-btn">&times;</button>
+                </div>
+                <div class="cams-grid">
+                    <div class="cam-feed" id="cam-1">
+                        <canvas id="cam-canvas-1" width="360" height="220"></canvas>
+                        <span class="cam-label">CAM 1: Koridor (Nav/Shields)</span>
+                    </div>
+                    <div class="cam-feed" id="cam-2">
+                        <canvas id="cam-canvas-2" width="360" height="220"></canvas>
+                        <span class="cam-label">CAM 2: Koridor (Admin/Storage)</span>
+                    </div>
+                    <div class="cam-feed" id="cam-3">
+                        <canvas id="cam-canvas-3" width="360" height="220"></canvas>
+                        <span class="cam-label">CAM 3: Koridor (Medbay/Security)</span>
+                    </div>
+                    <div class="cam-feed" id="cam-4">
+                        <canvas id="cam-canvas-4" width="360" height="220"></canvas>
+                        <span class="cam-label">CAM 4: Koridor (Reactor/Engines)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Table Radar Modal -->
+        <div id="admin-modal" class="screen-overlay hidden">
+            <div class="admin-window">
+                <div class="modal-header">
+                    <h2>ADMIN - GEMİ AKTİVİTE RADARI</h2>
+                    <button class="close-btn" id="close-admin-btn">&times;</button>
+                </div>
+                <canvas id="admin-canvas" width="760" height="480"></canvas>
+            </div>
+        </div>
+
+        <!-- Task Modals Container -->
+        <div id="task-modal-overlay" class="screen-overlay hidden">
+            <div class="task-window">
+                <div class="task-header">
+                    <span id="task-title-text">GÖREV</span>
+                    <button class="close-btn" id="close-task-btn">&times;</button>
+                </div>
+                <div id="task-content" class="task-content-area">
+                    <!-- Dynamic task canvas or HTML mini-game inserted here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Emergency Meeting & Voting Screen -->
+        <div id="meeting-modal" class="screen-overlay hidden">
+            <div class="meeting-window">
+                <div class="meeting-header">
+                    <div id="meeting-reason" class="meeting-banner">ACİL DURUM TOPLANTISI</div>
+                    <div class="meeting-timer-box">Oylama Süresi: <span id="meeting-timer-num">45</span>s</div>
+                </div>
+                
+                <div class="meeting-body">
+                    <!-- Left: Player Voting Cards -->
+                    <div class="voting-grid" id="voting-grid"></div>
+
+                    <!-- Right: Meeting Discussion Chat Box -->
+                    <div class="meeting-chat-panel">
+                        <div class="chat-header">Mürettebat Telsizi</div>
+                        <div id="chat-messages" class="chat-messages"></div>
+                        <div class="chat-quick-actions">
+                            <button class="quick-chat-btn" data-msg="Kırmızı şüpheli görünüyor!">"Kırmızı şüpheli!"</button>
+                            <button class="quick-chat-btn" data-msg="MedBay'de tarama yapıyordum.">"MedBay'deydim."</button>
+                            <button class="quick-chat-btn" data-msg="Cesedi Elektrik odasında buldum!">"Elektrikte buldum!"</button>
+                            <button class="quick-chat-btn" data-msg="Pas geçelim (Skip vote).">"Skip geçelim."</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="meeting-footer">
+                    <button id="btn-skip-vote" class="skip-vote-btn">OYU PAS GEÇ (SKIP VOTE)</button>
+                    <div id="vote-feedback" class="vote-status-text">Oyunuzu kullanın...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ejection (Uzaya Fırlatma) Screen -->
+        <div id="ejection-modal" class="screen-overlay hidden">
+            <canvas id="ejection-canvas" width="900" height="500"></canvas>
+            <div id="ejection-text" class="ejection-subtitle"></div>
+        </div>
+
+        <!-- Kill Animation Overlay -->
+        <div id="kill-animation-overlay" class="screen-overlay hidden">
+            <div class="kill-cinematic">
+                <div class="kill-fx-slash"></div>
+                <div id="kill-victim-name" class="kill-notice">ÖLDÜRÜLDÜN!</div>
+            </div>
+        </div>
+
+        <!-- Victory / Defeat Screen -->
+        <div id="endgame-modal" class="screen-overlay hidden">
+            <div class="endgame-card">
+                <h1 id="endgame-title" class="endgame-title">VICTORY</h1>
+                <p id="endgame-subtitle" class="endgame-subtitle">Tüm Sahtekarlar Yakalandı!</p>
+                <div id="endgame-impostors-reveal" class="impostor-list-box"></div>
+                <button id="btn-play-again" class="primary-btn pulse">LOBİYE DÖN</button>
+            </div>
+        </div>
+
+        <!-- Start / Lobby Screen -->
+        <div id="lobby-modal" class="screen-overlay">
+            <div class="lobby-card">
+                <div class="game-logo">
+                    <span class="logo-text">AMONG US</span>
+                    <span class="logo-badge">THE SKELD</span>
+                </div>
+
+                <div class="lobby-main-grid">
+                    <!-- Left: Player Preview & Customization -->
+                    <div class="lobby-preview-box">
+                        <div class="preview-canvas-wrap">
+                            <canvas id="lobby-preview-canvas" width="220" height="260"></canvas>
+                        </div>
+                        
+                        <div class="customizer-section">
+                            <label>İsim:</label>
+                            <input type="text" id="player-name-input" maxlength="10" value="Oyuncu" spellcheck="false">
+                        </div>
+
+                        <div class="customizer-section">
+                            <label>Renk Seçimi:</label>
+                            <div class="color-picker-grid" id="color-palette"></div>
+                        </div>
+
+                        <div class="customizer-section">
+                            <label>Şapka Seçimi:</label>
+                            <div class="hat-picker-grid" id="hat-palette"></div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Game Settings & Rules -->
+                    <div class="lobby-settings-box">
+                        <h3>OYUN AYARLARI</h3>
+
+                        <div class="setting-row">
+                            <span>Rol Tercihi:</span>
+                            <div class="role-selector-btns">
+                                <button class="role-opt-btn active" data-role="random">Rastgele</button>
+                                <button class="role-opt-btn" data-role="crewmate">Crewmate</button>
+                                <button class="role-opt-btn" data-role="impostor">Impostor</button>
+                            </div>
+                        </div>
+
+                        <div class="setting-row">
+                            <span>Toplam Oyuncu:</span>
+                            <div class="slider-control">
+                                <input type="range" id="setting-players" min="4" max="10" value="8">
+                                <span id="val-players">8</span>
+                            </div>
+                        </div>
+
+                        <div class="setting-row">
+                            <span>Sahtekar (Impostor) Sayısı:</span>
+                            <div class="slider-control">
+                                <input type="range" id="setting-impostors" min="1" max="2" value="1">
+                                <span id="val-impostors">1</span>
+                            </div>
+                        </div>
+
+                        <div class="setting-row">
+                            <span>Yürüme Hızı:</span>
+                            <div class="slider-control">
+                                <input type="range" id="setting-speed" min="1" max="2.5" step="0.25" value="1.5">
+                                <span id="val-speed">1.5x</span>
+                            </div>
+                        </div>
+
+                        <div class="setting-row">
+                            <span>Kill Cooldown (sn):</span>
+                            <div class="slider-control">
+                                <input type="range" id="setting-kill-cd" min="10" max="45" step="5" value="25">
+                                <span id="val-kill-cd">25s</span>
+                            </div>
+                        </div>
+
+                        <div class="setting-row">
+                            <span>Görüş Sistemi (Fog of War):</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="setting-fog" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="controls-guide">
+                            <h4>Kontroller:</h4>
+                            <p><b>WASD / Ok Tuşları:</b> Hareket</p>
+                            <p><b>E / Boşluk:</b> Görev / Buton Kullan</p>
+                            <p><b>Q:</b> Öldür (Impostor) | <b>V:</b> Vent | <b>TAB:</b> Sabotaj</p>
+                            <p><b>R:</b> Ceset Bildir (Report) | <b>M:</b> Harita</p>
+                        </div>
+
+                        <button id="btn-start-game" class="start-btn pulse">OYUNU BAŞLAT 🚀</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Audio Settings HUD Button (Top Right) -->
+        <div class="top-controls">
+            <button id="btn-sound-toggle" class="icon-btn" title="Ses Aç/Kapat">🔊</button>
+            <button id="btn-fullscreen" class="icon-btn" title="Tam Ekran">⛶</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/lighting.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/tasks.js"></script>
+    <script src="js/sabotage.js"></script>
+    <script src="js/botAI.js"></script>
+    <script src="js/voting.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
