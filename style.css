@@ -813,6 +813,76 @@ img {
   color: var(--text-secondary);
 }
 
+/* ===== MEHBUR AI CARD & GREEN DOWNLOAD BUTTON ===== */
+.project-card.mehbur-ai-card {
+  border-color: rgba(0, 240, 255, 0.25);
+  background: linear-gradient(145deg, rgba(18, 18, 31, 0.95), rgba(7, 24, 32, 0.75));
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card.mehbur-ai-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #00F0FF, #00E676, #008B99);
+}
+
+.project-card.mehbur-ai-card:hover {
+  border-color: #00F0FF;
+  box-shadow: 0 10px 40px rgba(0, 240, 255, 0.25);
+}
+
+.project-card.mehbur-ai-card .project-icon {
+  background: rgba(0, 240, 255, 0.12);
+  color: #00F0FF;
+  border: 1px solid rgba(0, 240, 255, 0.35);
+}
+
+.project-card.mehbur-ai-card:hover .project-icon {
+  background: linear-gradient(135deg, #00F0FF, #008B99);
+  color: #05070a;
+  box-shadow: 0 0 22px rgba(0, 240, 255, 0.55);
+}
+
+.proj-download-btn-green {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #00E676, #00C853);
+  color: #050d08 !important;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 800;
+  border-radius: 10px;
+  border: 1px solid #69F0AE;
+  box-shadow: 0 0 15px rgba(0, 230, 118, 0.4);
+  transition: var(--transition);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.proj-download-btn-green:hover {
+  background: linear-gradient(135deg, #69F0AE, #00E676);
+  color: #000 !important;
+  box-shadow: 0 0 25px rgba(0, 230, 118, 0.75);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.proj-download-btn-green i {
+  font-size: 1rem;
+  animation: bounceDown 1.6s infinite ease-in-out;
+}
+
+@keyframes bounceDown {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(3px); }
+}
+
 /* ===== ONGOING PROJECTS / PHASE ROADMAP ===== */
 .ongoing-projects-wrapper {
   background: var(--bg-card);
