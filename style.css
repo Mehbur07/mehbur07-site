@@ -305,7 +305,7 @@ img {
   right: 0;
   bottom: 0;
   background: radial-gradient(ellipse at center top, rgba(255, 215, 0, 0.04) 0%, transparent 60%),
-              radial-gradient(ellipse at center bottom, rgba(13, 13, 24, 0.9) 0%, transparent 60%);
+    radial-gradient(ellipse at center bottom, rgba(13, 13, 24, 0.9) 0%, transparent 60%);
   z-index: 1;
   pointer-events: none;
 }
@@ -352,7 +352,8 @@ img {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #53FC18; /* Kick green / live pulse */
+  background: #53FC18;
+  /* Kick green / live pulse */
   box-shadow: 0 0 10px #53FC18;
   animation: livePulse 1.8s infinite;
 }
@@ -362,10 +363,12 @@ img {
     transform: scale(0.95);
     box-shadow: 0 0 0 0 rgba(83, 252, 24, 0.7);
   }
+
   70% {
     transform: scale(1.1);
     box-shadow: 0 0 0 10px rgba(83, 252, 24, 0);
   }
+
   100% {
     transform: scale(0.95);
     box-shadow: 0 0 0 0 rgba(83, 252, 24, 0);
@@ -384,13 +387,25 @@ img {
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-14px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-14px);
+  }
 }
 
 @keyframes logoGlow {
-  0% { box-shadow: 0 0 20px var(--accent-glow), 0 0 40px rgba(255, 215, 0, 0.1); }
-  100% { box-shadow: 0 0 35px var(--accent-glow-strong), 0 0 70px rgba(255, 215, 0, 0.2); }
+  0% {
+    box-shadow: 0 0 20px var(--accent-glow), 0 0 40px rgba(255, 215, 0, 0.1);
+  }
+
+  100% {
+    box-shadow: 0 0 35px var(--accent-glow-strong), 0 0 70px rgba(255, 215, 0, 0.2);
+  }
 }
 
 .hero-name {
@@ -434,7 +449,9 @@ img {
 }
 
 @keyframes blink {
-  50% { opacity: 0; }
+  50% {
+    opacity: 0;
+  }
 }
 
 .hero-buttons {
@@ -504,8 +521,15 @@ img {
 }
 
 @keyframes scrollBounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(8px); }
+
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(8px);
+  }
 }
 
 /* ===== ABOUT SECTION ===== */
@@ -656,8 +680,13 @@ img {
   background: linear-gradient(90deg, transparent, var(--accent-glow), transparent);
 }
 
-#projects::before { top: 0; }
-#projects::after { bottom: 0; }
+#projects::before {
+  top: 0;
+}
+
+#projects::after {
+  bottom: 0;
+}
 
 .projects-grid {
   display: grid;
@@ -879,8 +908,15 @@ img {
 }
 
 @keyframes bounceDown {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(3px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(3px);
+  }
 }
 
 /* ===== ONGOING PROJECTS / PHASE ROADMAP ===== */
@@ -1116,8 +1152,13 @@ img {
   background: linear-gradient(90deg, transparent, var(--accent-glow), transparent);
 }
 
-#social::before { top: 0; }
-#social::after { bottom: 0; }
+#social::before {
+  top: 0;
+}
+
+#social::after {
+  bottom: 0;
+}
 
 .social-grid {
   display: grid;
@@ -1165,6 +1206,7 @@ img {
 .social-card.instagram::before {
   background: linear-gradient(135deg, rgba(131, 58, 180, 0.12), rgba(225, 48, 108, 0.12), rgba(252, 175, 69, 0.12));
 }
+
 .social-card.instagram:hover {
   box-shadow: 0 8px 30px rgba(225, 48, 108, 0.2);
 }
@@ -1172,6 +1214,7 @@ img {
 .social-card.youtube::before {
   background: rgba(255, 0, 0, 0.08);
 }
+
 .social-card.youtube:hover {
   box-shadow: 0 8px 30px rgba(255, 0, 0, 0.2);
 }
@@ -1179,6 +1222,7 @@ img {
 .social-card.discord::before {
   background: rgba(88, 101, 242, 0.1);
 }
+
 .social-card.discord:hover {
   box-shadow: 0 8px 30px rgba(88, 101, 242, 0.2);
 }
@@ -1186,6 +1230,7 @@ img {
 .social-card.twitter::before {
   background: rgba(29, 161, 242, 0.08);
 }
+
 .social-card.twitter:hover {
   box-shadow: 0 8px 30px rgba(29, 161, 242, 0.2);
 }
@@ -1193,6 +1238,7 @@ img {
 .social-card.github::before {
   background: rgba(230, 237, 243, 0.06);
 }
+
 .social-card.github:hover {
   box-shadow: 0 8px 30px rgba(230, 237, 243, 0.1);
 }
@@ -1200,6 +1246,7 @@ img {
 .social-card.kick::before {
   background: rgba(83, 252, 24, 0.08);
 }
+
 .social-card.kick:hover {
   box-shadow: 0 8px 30px rgba(83, 252, 24, 0.2);
 }
@@ -1207,6 +1254,7 @@ img {
 .social-card.twitch::before {
   background: rgba(145, 70, 255, 0.1);
 }
+
 .social-card.twitch:hover {
   box-shadow: 0 8px 30px rgba(145, 70, 255, 0.2);
 }
@@ -1322,7 +1370,7 @@ img {
   color: var(--accent);
 }
 
-.contact-info-card > p {
+.contact-info-card>p {
   color: var(--text-secondary);
   line-height: 1.8;
 }
@@ -1540,6 +1588,7 @@ footer {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -1548,6 +1597,7 @@ footer {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 992px) {
+
   .about-grid,
   .contact-grid {
     grid-template-columns: 1fr;
